@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LearnNest Dashboard</title>
+  <style>
+  
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+   
+    .sidebar {
+      width: 250px;
+      background: #1e1e2f;
+      color: #fff;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar .logo {
+      font-size: 24px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .sidebar .menu a {
+      display: block;
+      color: #bbb;
+      padding: 12px 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .sidebar .menu a:hover {
+      background: #333;
+      color: #fff;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .back-arrow {
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    /* Main */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background: #fff;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .menu-toggle {
+      font-size: 22px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: none;
+    }
+
+    .page-title {
+      font-size: 20px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        z-index: 1000;
+        background: #1e1e2f;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .main {
+        width: 100%;
+      }
+
+      .back-arrow {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+ 
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <button id="back-btn" class="back-arrow">←</button>
+        <h2 class="logo">LearnNest</h2>
+      </div>
+      <nav class="menu">
+        <a href="#">Dashboard</a>
+        <a href="#">Courses</a>
+        <a href="#">Assignments</a>
+        <a href="#">Profile</a>
+      </nav>
+    </aside>
+
+   
+    <div class="main">
+      
+      <header class="navbar">
+        <button id="menu-btn" class="menu-toggle">☰</button>
+        <h1 class="page-title">Dashboard</h1>
+      </header>
+
+     
+      <section class="content">
+        <p>Welcome to your student/creator dashboard!</p>
+      </section>
+    </div>
+  </div>
+
+  
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const menuBtn = document.getElementById('menu-btn');
+    const backBtn = document.getElementById('back-btn');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    backBtn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  </script>
+
+</body>
+</html>
